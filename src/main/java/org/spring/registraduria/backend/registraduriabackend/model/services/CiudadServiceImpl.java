@@ -6,6 +6,7 @@ import org.spring.registraduria.backend.registraduriabackend.model.dao.ICiudadDa
 import org.spring.registraduria.backend.registraduriabackend.model.entities.TablaCiudad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CiudadServiceImpl implements ICiudadService {
@@ -14,9 +15,17 @@ public class CiudadServiceImpl implements ICiudadService {
     private ICiudadDao ciudadDao;
 
     @Override
+    @Transactional(readOnly = true)
     public List<TablaCiudad> findAll() {
         // TODO Auto-generated method stub
         return (List<TablaCiudad>) ciudadDao.findAll();
+    }
+
+    @Override
+    @Transactional
+    public TablaCiudad create(TablaCiudad ciudad) {
+        // TODO Auto-generated method stub
+        return ciudadDao.save(ciudad);
     }
     
 }

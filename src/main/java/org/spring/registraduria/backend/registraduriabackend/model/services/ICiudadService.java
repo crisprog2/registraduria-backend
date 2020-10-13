@@ -7,5 +7,6 @@ import org.spring.registraduria.backend.registraduriabackend.model.entities.Tabl
 public interface ICiudadService {
 
     public List<TablaCiudad> findAll();
+    public TablaCiudad create(TablaCiudad ciudad);
     
 }
