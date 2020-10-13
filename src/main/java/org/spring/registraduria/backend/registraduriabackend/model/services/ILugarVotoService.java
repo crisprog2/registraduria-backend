@@ -6,6 +6,6 @@ import org.spring.registraduria.backend.registraduriabackend.model.entities.Tabl
 
 public interface ILugarVotoService {
     
-public List<TablaLugarVoto> findAll();
+    public List<TablaLugarVoto> findAll();
 
 }
