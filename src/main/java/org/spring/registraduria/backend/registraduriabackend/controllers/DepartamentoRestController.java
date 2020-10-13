@@ -1,7 +1,9 @@
 package org.spring.registraduria.backend.registraduriabackend.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.spring.registraduria.backend.registraduriabackend.model.dtos.DepartamentoDto;
 import org.spring.registraduria.backend.registraduriabackend.model.entities.TablaDepartamento;
 import org.spring.registraduria.backend.registraduriabackend.model.services.IDepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +26,39 @@ public class DepartamentoRestController {
     private IDepartamentoService departamentoService;
 
     @GetMapping("/departamentos")
-    public List<TablaDepartamento> index(){
-        return departamentoService.findAll();
+    public List<DepartamentoDto> index(){
+        List<DepartamentoDto> departamentoDtos=new ArrayList<DepartamentoDto>();
+        List<TablaDepartamento> departamentos=departamentoService.findAll();
+        for (TablaDepartamento tablaDepartamento : departamentos) {
+            DepartamentoDto departamentoDto=new DepartamentoDto();
+            departamentoDto.setCodDepartamento(tablaDepartamento.getCodDepartamento());
+            departamentoDto.setDepartamento(tablaDepartamento.getDepartamento());
+            departamentoDtos.add(departamentoDto);
+        }
+        return departamentoDtos;
     }
 
     @GetMapping("/departamento/{codDepartamento}")
-    public TablaDepartamento show(@PathVariable String codDepartamento){    
-        return departamentoService.findById(codDepartamento);   
+    public DepartamentoDto show(@PathVariable String codDepartamento){
+        DepartamentoDto departamentoDto=new DepartamentoDto();
+        TablaDepartamento tablaDepartamento=departamentoService.findById(codDepartamento);
+        if (tablaDepartamento!=null) {
+            departamentoDto.setCodDepartamento(tablaDepartamento.getCodDepartamento());
+            departamentoDto.setDepartamento(tablaDepartamento.getDepartamento());
+        } else {
+            departamentoDto=null;
+        }
+        
+        return departamentoDto;   
     }
 
     @PostMapping("/departamento")
     @ResponseStatus(HttpStatus.CREATED)
-    public TablaDepartamento create(@RequestBody TablaDepartamento departamento){
-        return departamentoService.create(departamento);
+    public TablaDepartamento create(@RequestBody DepartamentoDto departamento){
+        TablaDepartamento tablaDepartamento=new TablaDepartamento();
+        tablaDepartamento.setCodDepartamento(departamento.getCodDepartamento());
+        tablaDepartamento.setDepartamento(departamento.getDepartamento());
+        return departamentoService.create(tablaDepartamento);
     }
 
 }
