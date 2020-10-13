@@ -6,6 +6,7 @@ import org.spring.registraduria.backend.registraduriabackend.model.dao.ILugarVot
 import org.spring.registraduria.backend.registraduriabackend.model.entities.TablaLugarVoto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class LugarVotoImpl implements ILugarVotoService {
@@ -14,6 +15,7 @@ public class LugarVotoImpl implements ILugarVotoService {
     private ILugarVotoDao lugarVotoDao;
 
     @Override
+    @Transactional(readOnly = true)
     public List<TablaLugarVoto> findAll() {
         // TODO Auto-generated method stub
         return (List<TablaLugarVoto>) lugarVotoDao.findAll();
