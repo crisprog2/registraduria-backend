@@ -1,7 +1,9 @@
 package org.spring.registraduria.backend.registraduriabackend.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.spring.registraduria.backend.registraduriabackend.model.dtos.PersonaDto;
 import org.spring.registraduria.backend.registraduriabackend.model.entities.TablaPersona;
 import org.spring.registraduria.backend.registraduriabackend.model.services.IPersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,23 @@ public class PersonaController {
     private IPersonaService personaService;
 
     @GetMapping("/personas")
-    public List<TablaPersona> index(){
-        return personaService.findAll();
+    public List<PersonaDto> index(){
+        List<PersonaDto> personaDtos=new ArrayList<PersonaDto>();
+        List<TablaPersona> personas=personaService.findAll();
+        for (TablaPersona tablaPersona : personas) {
+            PersonaDto personaDto=new PersonaDto();
+            personaDto.setPrimerNombre(tablaPersona.getPrimerNombre());
+            personaDto.setSegundoNombre(tablaPersona.getSegundoNombre());
+            personaDto.setPrimerApellido(tablaPersona.getPrimerApellido());
+            personaDto.setSegundoApellido(tablaPersona.getSegundoApellido());
+            personaDto.setCedula(tablaPersona.getCedula());
+            personaDto.setGenero(tablaPersona.getGenero());
+            personaDto.setEdad(tablaPersona.getEdad());
+            personaDto.setJurado(tablaPersona.getJurado());
+            personaDto.setMesa(tablaPersona.getCod_Mesa().getMesa());
+            personaDtos.add(personaDto);
+        }
+        return personaDtos;
     }
     
 }

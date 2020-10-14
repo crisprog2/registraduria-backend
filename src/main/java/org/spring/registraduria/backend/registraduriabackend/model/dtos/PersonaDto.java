@@ -16,7 +16,7 @@ public class PersonaDto implements Serializable{
     private String genero;
     private int edad;
     private String jurado;
-    private Long mesa;
+    private int mesa;
 
     public Integer getCedula() {
         return cedula;
@@ -82,12 +82,14 @@ public class PersonaDto implements Serializable{
         this.jurado = jurado;
     }
 
-    public Long getMesa() {
+    public int getMesa() {
         return mesa;
     }
 
-    public void setMesa(Long mesa) {
+    public void setMesa(int mesa) {
         this.mesa = mesa;
     }
+
+    
 
 }
