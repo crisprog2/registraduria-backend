@@ -20,5 +20,12 @@ public class PersonaServiceImpl implements IPersonaService {
         // TODO Auto-generated method stub
         return (List<TablaPersona>) personaDao.findAll();
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public TablaPersona findOne(Integer idPersona) {
+        // TODO Auto-generated method stub
+        return personaDao.findById(idPersona).orElse(null);
+    }
     
 }

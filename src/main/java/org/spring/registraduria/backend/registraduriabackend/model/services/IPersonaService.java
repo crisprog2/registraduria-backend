@@ -7,5 +7,6 @@ import org.spring.registraduria.backend.registraduriabackend.model.entities.Tabl
 public interface IPersonaService {
 
     public List<TablaPersona> findAll();
+    public TablaPersona findOne(Integer idPersona);
     
 }
