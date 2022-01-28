@@ -17,28 +17,24 @@ public class DepartamentoServiceImpl implements IDepartamentoService {
     @Override
     @Transactional(readOnly = true)
     public List<TablaDepartamento> findAll() {
-        // TODO Auto-generated method stub
         return (List<TablaDepartamento>) departamentoDao.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
     public TablaDepartamento findById(String codDepartamento) {
-        // TODO Auto-generated method stub
         return departamentoDao.findById(codDepartamento).orElse(null);
     }
 
     @Override
     @Transactional
     public TablaDepartamento create(TablaDepartamento departamento) {
-        // TODO Auto-generated method stub
         return departamentoDao.save(departamento);
     }
 
     @Override
     @Transactional
     public void delete(String codDepartamento) {
-        // TODO Auto-generated method stub
         departamentoDao.deleteById(codDepartamento);
     }
     

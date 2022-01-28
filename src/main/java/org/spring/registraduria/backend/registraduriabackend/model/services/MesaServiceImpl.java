@@ -17,7 +17,6 @@ public class MesaServiceImpl implements IMesaService {
     @Override
     @Transactional(readOnly = true)
     public List<TablaMesa> findAll() {
-        // TODO Auto-generated method stub
         return (List<TablaMesa>) mesaDao.findAll();
     }
     

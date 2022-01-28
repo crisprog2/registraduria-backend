@@ -17,21 +17,18 @@ public class CiudadServiceImpl implements ICiudadService {
     @Override
     @Transactional(readOnly = true)
     public List<TablaCiudad> findAll() {
-        // TODO Auto-generated method stub
         return (List<TablaCiudad>) ciudadDao.findAll();
     }
 
     @Override
     @Transactional
     public TablaCiudad create(TablaCiudad ciudad) {
-        // TODO Auto-generated method stub
         return ciudadDao.save(ciudad);
     }
 
     @Override
     @Transactional(readOnly = true)
     public TablaCiudad findById(String codCiudad) {
-        // TODO Auto-generated method stub
         return ciudadDao.findById(codCiudad).orElse(null);
     }
     
