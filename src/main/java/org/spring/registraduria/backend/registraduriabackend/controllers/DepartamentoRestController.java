@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -59,6 +60,14 @@ public class DepartamentoRestController {
         tablaDepartamento.setCodDepartamento(departamento.getCodDepartamento());
         tablaDepartamento.setDepartamento(departamento.getDepartamento());
         return departamentoService.create(tablaDepartamento);
+    }
+
+    @PutMapping("/departamento/{codDepartamento}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public TablaDepartamento update(@RequestBody DepartamentoDto departamentoDto, @PathVariable String codDepartamento){
+        TablaDepartamento departamento=departamentoService.findById(codDepartamento);
+        departamento.setDepartamento(departamentoDto.getDepartamento());
+        return departamentoService.create(departamento);
     }
 
 }
