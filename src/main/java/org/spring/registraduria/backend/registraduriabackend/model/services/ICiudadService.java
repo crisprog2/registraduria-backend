@@ -9,5 +9,6 @@ public interface ICiudadService {
     public List<TablaCiudad> findAll();
     public TablaCiudad create(TablaCiudad ciudad);
     public TablaCiudad findById(String codCiudad);
+    public void delete(String codCiudad);
     
 }

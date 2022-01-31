@@ -31,5 +31,11 @@ public class CiudadServiceImpl implements ICiudadService {
     public TablaCiudad findById(String codCiudad) {
         return ciudadDao.findById(codCiudad).orElse(null);
     }
+
+    @Override
+    @Transactional
+    public void delete(String codCiudad) {
+        ciudadDao.deleteById(codCiudad); 
+    }
     
 }
