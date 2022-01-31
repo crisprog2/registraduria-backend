@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -65,6 +66,14 @@ public class CiudadRestController {
             ciudadDto=null;
         }
         return ciudadDto;
+    }
+
+    @PutMapping("/ciudad/{codCiudad}")
+    public TablaCiudad update(@RequestBody CiudadDto ciudad, @PathVariable String codCiudad){
+        TablaCiudad tablaCiudad=ciudadService.findById(codCiudad);
+        tablaCiudad.setCiudad(ciudad.getCiudad());
+        tablaCiudad.setCod_Departamento(departamentoService.findById(ciudad.getDepartamento()));
+        return ciudadService.create(tablaCiudad);
     }
     
 }
