@@ -10,6 +10,7 @@ import org.spring.registraduria.backend.registraduriabackend.model.services.IDep
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -74,6 +75,12 @@ public class CiudadRestController {
         tablaCiudad.setCiudad(ciudad.getCiudad());
         tablaCiudad.setCod_Departamento(departamentoService.findById(ciudad.getDepartamento()));
         return ciudadService.create(tablaCiudad);
+    }
+
+    @DeleteMapping("/ciudad/{codCiudad}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable String codCiudad){
+        ciudadService.delete(codCiudad);
     }
     
 }
