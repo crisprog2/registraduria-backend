@@ -26,7 +26,7 @@ public class HomeController {
     public ConsultaDto index(@PathVariable Integer cedula){
 
         ConsultaDto consultaDto=new ConsultaDto();
-        TablaPersona persona=personaService.findOne(cedula);
+        TablaPersona persona=personaService.findById(cedula);
 
         if (persona!=null) {
             TablaMesa mesa=persona.getCod_Mesa();

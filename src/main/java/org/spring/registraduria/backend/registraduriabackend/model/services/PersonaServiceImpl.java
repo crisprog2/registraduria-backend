@@ -22,8 +22,20 @@ public class PersonaServiceImpl implements IPersonaService {
 
     @Override
     @Transactional(readOnly = true)
-    public TablaPersona findOne(Integer idPersona) {
+    public TablaPersona findById(Integer idPersona) {
         return personaDao.findById(idPersona).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public TablaPersona create(TablaPersona tablaPersona) {
+        return personaDao.save(tablaPersona);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Integer idPersona) {
+        personaDao.deleteById(idPersona);
     }
     
 }
