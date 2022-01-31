@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,6 +51,20 @@ public class CiudadRestController {
         tablaCiudad.setCiudad(ciudad.getCiudad());
         tablaCiudad.setCod_Departamento(departamentoService.findById(ciudad.getDepartamento()));
         return ciudadService.create(tablaCiudad);
+    }
+
+    @GetMapping("/ciudad/{codCiudad}")
+    public CiudadDto show(@PathVariable String codCiudad){
+        CiudadDto ciudadDto=new CiudadDto();
+        TablaCiudad ciudad=ciudadService.findById(codCiudad);
+        if (ciudad!=null) {
+            ciudadDto.setCodCiudad(ciudad.getCodCiudad());
+            ciudadDto.setCiudad(ciudad.getCiudad());
+            ciudadDto.setDepartamento(ciudad.getCod_Departamento().getDepartamento());
+        } else {
+            ciudadDto=null;
+        }
+        return ciudadDto;
     }
     
 }
