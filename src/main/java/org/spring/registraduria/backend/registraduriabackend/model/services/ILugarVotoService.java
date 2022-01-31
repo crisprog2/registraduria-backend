@@ -9,5 +9,6 @@ public interface ILugarVotoService {
     public List<TablaLugarVoto> findAll();
     public TablaLugarVoto findById(String codLugarVoto);
     public TablaLugarVoto create(TablaLugarVoto lugarVoto);
+    public void delete(String codLugarVoto);
 
 }

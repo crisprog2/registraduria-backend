@@ -31,5 +31,10 @@ public class LugarVotoImpl implements ILugarVotoService {
     public TablaLugarVoto create(TablaLugarVoto lugarVoto) {
         return lugarVotoDao.save(lugarVoto);
     }
+
+    @Override
+    public void delete(String codLugarVoto) {
+        lugarVotoDao.deleteById(codLugarVoto);
+    }
     
 }
