@@ -19,5 +19,23 @@ public class MesaServiceImpl implements IMesaService {
     public List<TablaMesa> findAll() {
         return (List<TablaMesa>) mesaDao.findAll();
     }
+
+    @Override
+    @Transactional
+    public TablaMesa create(TablaMesa mesa) {
+        return mesaDao.save(mesa);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public TablaMesa findById(Long codMesa) {
+        return mesaDao.findById(codMesa).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long codMesa) {
+        mesaDao.deleteById(codMesa);
+    }
     
 }

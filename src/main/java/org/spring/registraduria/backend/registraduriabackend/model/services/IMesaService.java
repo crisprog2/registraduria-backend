@@ -7,5 +7,8 @@ import org.spring.registraduria.backend.registraduriabackend.model.entities.Tabl
 public interface IMesaService {
 
     public List<TablaMesa> findAll();
+    public TablaMesa create(TablaMesa mesa);
+    public TablaMesa findById(Long codMesa);
+    public void delete(Long codMesa);
     
 }
