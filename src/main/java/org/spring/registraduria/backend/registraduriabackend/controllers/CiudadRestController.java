@@ -70,6 +70,7 @@ public class CiudadRestController {
     }
 
     @PutMapping("/ciudad/{codCiudad}")
+    @ResponseStatus(HttpStatus.CREATED)
     public TablaCiudad update(@RequestBody CiudadDto ciudad, @PathVariable String codCiudad){
         TablaCiudad tablaCiudad=ciudadService.findById(codCiudad);
         tablaCiudad.setCiudad(ciudad.getCiudad());
