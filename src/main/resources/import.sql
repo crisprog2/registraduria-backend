@@ -16,3 +16,6 @@ insert into tabla_mesa (mesa, cod_lugar) VALUES (301, 'L001');
 
 insert into tabla_persona (cedula, primer_Nombre, segundo_Nombre, primer_Apellido, segundo_Apellido, genero, edad, jurado, cod_Mesa) VALUES (1100958834, 'Christian', 'Romario', 'Chacon', 'Pinzon', 'M', 29, 'Y', '1');
 insert into tabla_persona (cedula, primer_Nombre, segundo_Nombre, primer_Apellido, segundo_Apellido, genero, edad, jurado, cod_Mesa) VALUES (1100958835, 'Juan', 'Camilo', 'Chacon', 'Pinzon', 'M', 27, 'N', '1');
+
+insert into tabla_registro (registro, cedula) VALUES (0, 1100958834);
+insert into tabla_registro (registro, cedula) VALUES (0, 1100958835);
